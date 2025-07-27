@@ -4,6 +4,11 @@ const std = @import("std");
 const SCREEN_W = 1280;
 const SCREEN_H = 720;
 
+// NOTE: Doesn't do window.updateSurface()
+fn paintPix(surf: *const sdl3.surface.Surface, x: usize, y: usize, col: sdl3.pixels.Color) !void {
+    try surf.writePixel(x, y, col);
+}
+
 pub fn main() !void {
     defer sdl3.shutdown();
     // Init sdl3 window
@@ -16,7 +21,7 @@ pub fn main() !void {
 
     const surface = try window.getSurface();
     try surface.fillRect(null, surface.mapRgb(0, 0, 0));
-    try surface.writePixel(300, 200, .{ .r = 250, .g = 200, .b = 34, .a = 255 });
+    try paintPix(&surface, 300, 200, .{ .r = 250, .g = 200, .b = 34, .a = 255 });
     try window.updateSurface();
 
     while (true) {
