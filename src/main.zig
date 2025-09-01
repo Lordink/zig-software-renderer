@@ -132,6 +132,7 @@ pub fn main() !void {
             }
             x += 1;
         }
+        try window.updateSurface();
         switch (try sdl3.events.waitAndPop()) {
             .quit => break,
             .terminating => break,
