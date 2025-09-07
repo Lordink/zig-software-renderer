@@ -1,3 +1,6 @@
+# Zig Software Renderer
+
+Sideproject implementing rendering techniques using software rendering with Zig & SDL3.
 
 Based on the book "Computer Graphics From Scratch", available [here](https://gabrielgambetta.com/computer-graphics-from-scratch/). Tested on zig 0.14.1 (stable).
 
