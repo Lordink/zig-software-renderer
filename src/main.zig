@@ -49,7 +49,8 @@ fn paintPix(surf: *const sdl3.surface.Surface, x: i32, y: i32, col: sdl3.pixels.
     if (s_y < 0 or s_y >= SCREEN_H) {
         return;
     }
-    //print("{}\n", .{s_y});
+    // TODO: likely very slow. Try finding a more direct access
+    // to pixel data
     try surf.writePixel(@intCast(s_x), @intCast(s_y), col);
 }
 
@@ -65,13 +66,13 @@ pub fn main() !void {
 
     const surface = try window.getSurface();
     try surface.fillRect(null, surface.mapRgb(0, 0, 0));
-    //try paintPix(&surface, 300, 200, .{ .r = 250, .g = 200, .b = 34, .a = 255 });
     try window.updateSurface();
 
     const spheres = [_]Sphere{
         Sphere.new(
             Vec3.new(0.0, -1.0, 3.0),
             1.0,
+            // TODO color helpers
             .{ .r = 255, .g = 0, .b = 0, .a = 255 },
         ),
         Sphere.new(

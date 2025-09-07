@@ -5,3 +5,6 @@ Based on the book "Computer Graphics From Scratch", available [here](https://gab
 ```
 zig build run
 ```
+
+## Deps
+Uses SDL3 zig library for window creation.
